@@ -1,5 +1,5 @@
 Dockerfile
-nginx.conf
+Caddyfile
 .gitignore
 .git
 *.zip

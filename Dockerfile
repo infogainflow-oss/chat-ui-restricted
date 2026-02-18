@@ -1,13 +1,11 @@
-# Use lightweight nginx to serve static files
-FROM nginx:alpine
+# Use Caddy to serve static files
+FROM caddy:alpine
 
-# Remove default nginx static content
-RUN rm -rf /usr/share/nginx/html/*
+# Copy Caddy config
+COPY Caddyfile /etc/caddy/Caddyfile
 
-# Copy all static site files
-COPY . /usr/share/nginx/html/
-
-# Copy custom nginx config (overwrite after the COPY above)
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Copy static site files
+COPY . /srv
 
 EXPOSE 80
+
