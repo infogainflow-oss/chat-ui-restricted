@@ -1,11 +1,11 @@
-:80 {
-    root * /srv
+# Chat-ui (restricted)
+rschat.{$BASE_DOMAIN} {
+    root * /var/www/restricted-chat-ui
     file_server
-    encode gzip
+}
 
-    header {
-        X-Frame-Options "SAMEORIGIN"
-        X-Content-Type-Options "nosniff"
-        X-XSS-Protection "1; mode=block"
-    }
+# Standard Chat-ui 
+stchat.{$BASE_DOMAIN} {
+    root * /var/www/standard-chat-ui
+    file_server
 }
