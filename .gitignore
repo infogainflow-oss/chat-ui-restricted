@@ -1,0 +1,9 @@
+# Deployment artifacts
+chat-ui-deployment.zip
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
