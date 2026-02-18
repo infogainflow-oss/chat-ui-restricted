@@ -23,7 +23,7 @@ class ChatbotWidget {
         this.isAwaitingResponse = false;
 
         // Webhook configuration - Replace with your n8n webhook URL
-        this.webhookUrl = 'https://n8n.tutario.click/webhook/chatbot-hybrid';
+        this.webhookUrl = 'https://n8n.tutario.click/webhook/chatbot-restricted';
         this.sessionRetrievalWebhookUrl = 'https://n8n.tutario.click/webhook/session-retrieval';
         this.chatRetrievalWebhookUrl = 'https://n8n.tutario.click/webhook/chat-retrieval';
 
@@ -1474,6 +1474,12 @@ class ChatbotWidget {
         if (!this.cookiesAccepted) {
             this.showCookieConsent();
             this.showToast('Please accept cookies to send a message.');
+            return;
+        }
+
+        // Block input when inputMode is null (waiting for backend to allow input)
+        if (!this.activeInputMode) {
+            this.showToast('Please wait for a prompt before sending a message.');
             return;
         }
 
