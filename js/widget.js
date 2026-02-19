@@ -1477,12 +1477,6 @@ class ChatbotWidget {
             return;
         }
 
-        // Block input when inputMode is null (waiting for backend to allow input)
-        if (!this.activeInputMode) {
-            this.showToast('Please wait for a prompt before sending a message.');
-            return;
-        }
-
         if (this.isAwaitingResponse) {
             this.showToast('Please wait for a response before sending another message.');
             return;
