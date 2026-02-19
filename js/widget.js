@@ -3137,7 +3137,11 @@ class ChatbotWidget {
 
     hideCookieConsent() {
         const cookieConsent = document.getElementById('chatbot-cookie-consent');
-        cookieConsent.classList.remove('show');
+        if (cookieConsent) {
+            cookieConsent.classList.remove('show');
+        }
+        // Always call loadAfterConsent even if element doesn't exist
+        this.loadAfterConsent();
     }
 
     loadAfterConsent() {
